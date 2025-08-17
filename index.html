@@ -1,0 +1,1894 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Name - Ultimate Robotics Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 50%, #16213e 100%);
+            color: #ffffff;
+            overflow-x: hidden;
+        }
+
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            background: radial-gradient(circle at 30% 20%, #e94560 0%, transparent 50%),
+                        radial-gradient(circle at 70% 80%, #0f3460 0%, transparent 50%);
+        }
+
+        .hero-content {
+            text-align: center;
+            z-index: 2;
+            max-width: 800px;
+            padding: 2rem;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            font-weight: 900;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, #00d4ff, #e94560, #ffd700);
+            background-size: 300% 300%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: gradientShift 3s ease-in-out infinite;
+        }
+
+        @keyframes gradientShift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        .photo-placeholder {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, #00d4ff, #e94560);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            margin: 0 auto 2rem;
+            box-shadow: 0 20px 40px rgba(0, 212, 255, 0.3);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .photo-placeholder:hover {
+            transform: scale(1.1);
+            box-shadow: 0 30px 60px rgba(0, 212, 255, 0.5);
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .cta-button {
+            background: linear-gradient(45deg, #e94560, #0f3460);
+            border: none;
+            padding: 1rem 2rem;
+            font-size: 1.1rem;
+            border-radius: 50px;
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(233, 69, 96, 0.3);
+            margin: 0.5rem;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(233, 69, 96, 0.5);
+        }
+
+        .nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(15, 15, 35, 0.9);
+            backdrop-filter: blur(10px);
+            padding: 1rem 2rem;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        .nav-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #00d4ff;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            position: relative;
+            cursor: pointer;
+        }
+
+        .nav-links a:hover {
+            color: #00d4ff;
+        }
+
+        .section {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section h2 {
+            font-size: 3rem;
+            margin-bottom: 3rem;
+            text-align: center;
+            background: linear-gradient(45deg, #00d4ff, #ffd700);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .skill-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 212, 255, 0.2);
+        }
+
+        .skill-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #00d4ff;
+        }
+
+        .code-playground {
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 15px;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border: 1px solid rgba(0, 212, 255, 0.3);
+        }
+
+        .code-editor {
+            background: #1e1e1e;
+            border: none;
+            width: 100%;
+            height: 200px;
+            color: #ffffff;
+            font-family: 'Monaco', 'Menlo', monospace;
+            padding: 1rem;
+            border-radius: 10px;
+            resize: vertical;
+            font-size: 14px;
+        }
+
+        .run-button {
+            background: linear-gradient(45deg, #00d4ff, #0f3460);
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 10px;
+            color: white;
+            cursor: pointer;
+            margin-top: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .run-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0, 212, 255, 0.3);
+        }
+
+        .output {
+            background: #000;
+            color: #00ff00;
+            padding: 1rem;
+            border-radius: 10px;
+            margin-top: 1rem;
+            font-family: monospace;
+            min-height: 50px;
+            white-space: pre-wrap;
+        }
+
+        .gallery-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .gallery-item {
+            aspect-ratio: 1;
+            background: linear-gradient(45deg, #e94560, #0f3460);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.05);
+            box-shadow: 0 20px 40px rgba(233, 69, 96, 0.4);
+        }
+
+        .upload-area {
+            border: 2px dashed #00d4ff;
+            border-radius: 15px;
+            padding: 2rem;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin: 2rem 0;
+        }
+
+        .upload-area:hover {
+            border-color: #e94560;
+            background: rgba(233, 69, 96, 0.1);
+        }
+
+        .quiz-container {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+
+        .quiz-question {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .quiz-options {
+            display: grid;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .quiz-option {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 1rem;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .quiz-option:hover {
+            background: rgba(0, 212, 255, 0.2);
+            border-color: #00d4ff;
+        }
+
+        .quiz-option.correct {
+            background: rgba(0, 255, 0, 0.2);
+            border-color: #00ff00;
+        }
+
+        .quiz-option.incorrect {
+            background: rgba(255, 0, 0, 0.2);
+            border-color: #ff0000;
+        }
+
+        .achievement-badge {
+            display: inline-block;
+            background: linear-gradient(45deg, #ffd700, #ff6b6b);
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            margin: 0.25rem;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .timeline {
+            position: relative;
+            margin: 3rem 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(to bottom, #00d4ff, #e94560);
+            transform: translateX(-50%);
+        }
+
+        .timeline-item {
+            display: flex;
+            margin: 2rem 0;
+            align-items: center;
+        }
+
+        .timeline-item:nth-child(odd) {
+            flex-direction: row;
+        }
+
+        .timeline-item:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+
+        .timeline-content {
+            flex: 1;
+            padding: 1.5rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            margin: 0 2rem;
+            backdrop-filter: blur(10px);
+        }
+
+        .timeline-dot {
+            width: 20px;
+            height: 20px;
+            background: #00d4ff;
+            border-radius: 50%;
+            position: relative;
+            z-index: 2;
+        }
+
+        .data-viz {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+
+        .chart-container {
+            height: 300px;
+            position: relative;
+            margin: 2rem 0;
+        }
+
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 2rem;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #00d4ff;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+            color: white;
+            font-size: 1rem;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #00d4ff;
+            box-shadow: 0 0 20px rgba(0, 212, 255, 0.3);
+        }
+
+        .mini-game {
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 15px;
+            padding: 2rem;
+            margin: 2rem 0;
+            text-align: center;
+        }
+
+        .game-canvas {
+            border: 2px solid #00d4ff;
+            border-radius: 10px;
+            background: #000;
+            margin: 1rem auto;
+            display: block;
+        }
+
+        .chatbot {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 350px;
+            height: 400px;
+            background: rgba(15, 15, 35, 0.95);
+            border-radius: 20px;
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(0, 212, 255, 0.3);
+            z-index: 1000;
+            display: none;
+            flex-direction: column;
+        }
+
+        .chatbot-header {
+            background: linear-gradient(45deg, #00d4ff, #e94560);
+            padding: 1rem;
+            border-radius: 20px 20px 0 0;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .chatbot-messages {
+            flex: 1;
+            padding: 1rem;
+            overflow-y: auto;
+            font-size: 0.9rem;
+        }
+
+        .chatbot-input {
+            padding: 1rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .chatbot-input input {
+            width: 100%;
+            padding: 0.5rem;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+            color: white;
+        }
+
+        .chat-toggle {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, #00d4ff, #e94560);
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            box-shadow: 0 10px 30px rgba(0, 212, 255, 0.3);
+            transition: all 0.3s ease;
+            z-index: 1001;
+        }
+
+        .chat-toggle:hover {
+            transform: scale(1.1);
+        }
+
+        .progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 3px;
+            background: linear-gradient(90deg, #00d4ff, #e94560);
+            z-index: 1001;
+            transition: width 0.1s ease;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 2000;
+            backdrop-filter: blur(5px);
+        }
+
+        .modal-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(15, 15, 35, 0.95);
+            border-radius: 20px;
+            padding: 2rem;
+            max-width: 600px;
+            width: 90%;
+            border: 1px solid rgba(0, 212, 255, 0.3);
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 2rem;
+            cursor: pointer;
+        }
+
+        .floating-shapes {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .shape {
+            position: absolute;
+            opacity: 0.1;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .shape:nth-child(1) {
+            top: 20%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .shape:nth-child(2) {
+            top: 60%;
+            right: 10%;
+            animation-delay: 2s;
+        }
+
+        .shape:nth-child(3) {
+            bottom: 20%;
+            left: 50%;
+            animation-delay: 4s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(180deg); }
+        }
+
+        .achievement-container {
+            position: fixed;
+            top: 100px;
+            right: 20px;
+            z-index: 1000;
+        }
+
+        .achievement-popup {
+            background: linear-gradient(45deg, #ffd700, #ff6b6b);
+            padding: 1rem 1.5rem;
+            border-radius: 15px;
+            margin-bottom: 1rem;
+            animation: achievementSlide 0.5s ease;
+            box-shadow: 0 10px 30px rgba(255, 215, 0, 0.3);
+        }
+
+        @keyframes achievementSlide {
+            from { transform: translateX(100%); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .project-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(15px);
+            border-radius: 20px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .project-card:hover {
+            transform: scale(1.02);
+            box-shadow: 0 25px 50px rgba(233, 69, 96, 0.3);
+        }
+
+        .project-image {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(45deg, #e94560, #0f3460);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            position: relative;
+        }
+
+        .project-content {
+            padding: 2rem;
+        }
+
+        .tech-tag {
+            background: rgba(0, 212, 255, 0.2);
+            border: 1px solid #00d4ff;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            color: #00d4ff;
+            margin: 0.25rem;
+            display: inline-block;
+        }
+
+        .filter-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .filter-btn.active {
+            background: linear-gradient(45deg, #00d4ff, #e94560);
+            border-color: transparent;
+        }
+
+        .score-display {
+            text-align: center;
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            padding: 1rem;
+            background: rgba(255, 215, 0, 0.1);
+            border-radius: 15px;
+            border: 1px solid #ffd700;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5rem; }
+            .section { padding: 3rem 1rem; }
+            .nav-links { display: none; }
+            .chatbot { width: 300px; height: 350px; }
+            .timeline::before { left: 20px; }
+            .timeline-item { flex-direction: column !important; }
+            .timeline-content { margin: 0 0 0 3rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="progress-bar" id="progressBar"></div>
+    
+    <nav class="nav" id="navbar">
+        <div class="nav-content">
+            <div class="logo">YOUR NAME</div>
+            <div class="nav-links">
+                <a onclick="scrollToSection('hero')">Home</a>
+                <a onclick="scrollToSection('skills')">Skills</a>
+                <a onclick="scrollToSection('projects')">Projects</a>
+                <a onclick="scrollToSection('timeline')">Journey</a>
+                <a onclick="scrollToSection('quiz')">Challenge Me</a>
+                <a onclick="scrollToSection('contact')">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="achievement-container" id="achievements"></div>
+
+    <section class="hero" id="hero">
+        <div class="floating-shapes">
+            <div class="shape">🔧</div>
+            <div class="shape">⚙️</div>
+            <div class="shape">🤖</div>
+        </div>
+        
+        <div class="hero-content">
+            <div class="photo-placeholder" onclick="uploadPhoto()">📸</div>
+            <input type="file" id="photoUpload" accept="image/*" style="display: none;">
+            <h1>YOUR NAME</h1>
+            <p class="hero-subtitle">Future Robotics Engineer | Tech Innovator | Team Leader</p>
+            <p style="margin-bottom: 2rem; font-size: 1.1rem; opacity: 0.8;">
+                Building the future through robotics, AI, and innovation
+            </p>
+            <button class="cta-button" onclick="scrollToSection('skills')">🚀 Explore My Arsenal</button>
+            <button class="cta-button" onclick="scrollToSection('projects')">💻 View Projects</button>
+            <button class="cta-button" onclick="startQuiz()">🧠 Test My Skills</button>
+        </div>
+    </section>
+
+    <section class="section" id="skills">
+        <h2>Technical Arsenal</h2>
+        
+        <div class="skills-grid">
+            <div class="skill-card">
+                <h3>🔧 Engineering & Hardware</h3>
+                <ul style="list-style: none; line-height: 2;">
+                    <li>• CAD Design (Fusion 360, SolidWorks)</li>
+                    <li>• 3D Printing & Prototyping</li>
+                    <li>• Circuit Design & Electronics</li>
+                    <li>• Mechanical Systems Design</li>
+                    <li>• Arduino/Raspberry Pi Programming</li>
+                </ul>
+            </div>
+            
+            <div class="skill-card">
+                <h3>💻 Programming & Software</h3>
+                <ul style="list-style: none; line-height: 2;">
+                    <li>• Java (FTC Robot Programming)</li>
+                    <li>• Python (AI/ML, Automation)</li>
+                    <li>• C++ (Embedded Systems)</li>
+                    <li>• JavaScript/HTML/CSS (Web Dev)</li>
+                    <li>• Git Version Control</li>
+                </ul>
+            </div>
+            
+            <div class="skill-card">
+                <h3>🤖 Robotics Specific</h3>
+                <ul style="list-style: none; line-height: 2;">
+                    <li>• FTC Robot Programming</li>
+                    <li>• Computer Vision (OpenCV)</li>
+                    <li>• Sensor Integration</li>
+                    <li>• Autonomous Navigation</li>
+                    <li>• Real-time Control Systems</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="code-playground">
+            <h3 style="color: #00d4ff; margin-bottom: 1rem;">🔥 Live Code Playground - Try My Skills!</h3>
+            <textarea class="code-editor" id="codeEditor" placeholder="// Try some JavaScript! Examples:
+console.log('Hello FTC Team Fusion!');
+function robotMove(direction, speed) {
+    return `Robot moving ${direction} at ${speed}% power`;
+}
+console.log(robotMove('forward', 75));
+
+// Or try some math:
+const fibonacci = n => n <= 1 ? n : fibonacci(n-1) + fibonacci(n-2);
+console.log('Fibonacci sequence:', [0,1,2,3,4,5].map(fibonacci));"></textarea>
+            <button class="run-button" onclick="runCode()">▶️ Execute Code</button>
+            <div class="output" id="codeOutput">Ready to execute your code...</div>
+        </div>
+    </section>
+
+    <section class="section" id="projects">
+        <h2>Project Showcase</h2>
+        
+        <div class="filter-buttons">
+            <button class="filter-btn active" onclick="filterProjects('all')">All Projects</button>
+            <button class="filter-btn" onclick="filterProjects('robotics')">Robotics</button>
+            <button class="filter-btn" onclick="filterProjects('ai')">AI/ML</button>
+            <button class="filter-btn" onclick="filterProjects('web')">Web Dev</button>
+            <button class="filter-btn" onclick="filterProjects('hardware')">Hardware</button>
+        </div>
+
+        <div class="upload-area" onclick="uploadProjectPhoto()">
+            <h3>📷 Add Project Photos</h3>
+            <p>Click to upload images of your awesome projects!</p>
+            <input type="file" id="projectUpload" accept="image/*" multiple style="display: none;">
+        </div>
+
+        <div class="gallery-container" id="projectGallery">
+            <div class="gallery-item project-item" data-category="robotics">🤖</div>
+            <div class="gallery-item project-item" data-category="ai">🧠</div>
+            <div class="gallery-item project-item" data-category="web">🌐</div>
+            <div class="gallery-item project-item" data-category="hardware">⚡</div>
+        </div>
+
+        <div class="projects-grid">
+            <div class="project-card project-item" data-category="robotics">
+                <div class="project-image">🤖</div>
+                <div class="project-content">
+                    <h3 style="color: #ffd700;">Autonomous FTC Competition Bot</h3>
+                    <p style="margin-bottom: 1rem;">
+                        Built championship-level robot with advanced autonomous capabilities. 
+                        Implemented computer vision for ring detection and precise scoring mechanisms.
+                    </p>
+                    <div class="tech-stack">
+                        <span class="tech-tag">Java</span>
+                        <span class="tech-tag">OpenCV</span>
+                        <span class="tech-tag">FTC SDK</span>
+                        <span class="tech-tag">CAD</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="project-card project-item" data-category="ai">
+                <div class="project-image">🧠</div>
+                <div class="project-content">
+                    <h3 style="color: #ffd700;">AI-Powered Strategy Assistant</h3>
+                    <p style="margin-bottom: 1rem;">
+                        Created machine learning system that analyzes FTC match footage to optimize robot strategies and predict opponent moves.
+                    </p>
+                    <div class="tech-stack">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">TensorFlow</span>
+                        <span class="tech-tag">Computer Vision</span>
+                        <span class="tech-tag">Data Analysis</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="project-card project-item" data-category="web">
+                <div class="project-image">🌐</div>
+                <div class="project-content">
+                    <h3 style="color: #ffd700;">Team Management Platform</h3>
+                    <p style="margin-bottom: 1rem;">
+                        Full-stack web application for robotics team collaboration. Features real-time chat, project tracking, and resource sharing.
+                    </p>
+                    <div class="tech-stack">
+                        <span class="tech-tag">React</span>
+                        <span class="tech-tag">Node.js</span>
+                        <span class="tech-tag">WebSocket</span>
+                        <span class="tech-tag">Database</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="project-card project-item" data-category="hardware">
+                <div class="project-image">⚡</div>
+                <div class="project-content">
+                    <h3 style="color: #ffd700;">Custom PCB Motor Controller</h3>
+                    <p style="margin-bottom: 1rem;">
+                        Designed and manufactured custom motor controller boards for precise robot movement. Includes safety features and real-time diagnostics.
+                    </p>
+                    <div class="tech-stack">
+                        <span class="tech-tag">PCB Design</span>
+                        <span class="tech-tag">C++</span>
+                        <span class="tech-tag">Electronics</span>
+                        <span class="tech-tag">3D Printing</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="timeline">
+        <h2>My Robotics Journey</h2>
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <h3 style="color: #ffd700;">Started Programming</h3>
+                    <p>Began learning Python and Java. Built my first "Hello World" and immediately fell in love with coding.</p>
+                    <span style="color: #00d4ff;">2022</span>
+                </div>
+                <div class="timeline-dot"></div>
+            </div>
+            
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <h3 style="color: #ffd700;">First Robot Build</h3>
+                    <p>Constructed my first Arduino-based robot. Learned electronics, sensors, and basic autonomous navigation.</p>
+                    <span style="color: #00d4ff;">2023</span>
+                </div>
+                <div class="timeline-dot"></div>
+            </div>
+            
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <h3 style="color: #ffd700;">Competition Success</h3>
+                    <p>Led team to regional robotics competition victory. Developed advanced autonomous routines and strategic gameplay.</p>
+                    <span style="color: #00d4ff;">2024</span>
+                </div>
+                <div class="timeline-dot"></div>
+            </div>
+            
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <h3 style="color: #ffd700;">AI Integration</h3>
+                    <p>Started incorporating machine learning into robotics projects. Built computer vision systems for object recognition.</p>
+                    <span style="color: #00d4ff;">2025</span>
+                </div>
+                <div class="timeline-dot"></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="data-viz">
+        <h2>Skills Progression Data</h2>
+        <div class="data-viz">
+            <h3 style="color: #00d4ff; margin-bottom: 2rem;">📊 My Learning Analytics</h3>
+            <div class="chart-container">
+                <canvas id="skillsChart" width="400" height="300"></canvas>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="quiz">
+        <h2>Challenge My Knowledge</h2>
+        <div class="score-display">
+            <span id="quizScore">Score: 0/0</span> | 
+            <span id="achievementCount">Achievements: 0</span>
+        </div>
+        
+        <div class="quiz-container" id="quizContainer">
+            <div class="quiz-question" id="quizQuestion">
+                Ready to test my robotics and programming knowledge? Click Start Quiz!
+            </div>
+            <div class="quiz-options" id="quizOptions">
+                <button class="cta-button" onclick="startQuiz()">🎯 Start Technical Quiz</button>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="mini-games">
+        <h2>Interactive Demos</h2>
+        <div class="mini-game">
+            <h3 style="color: #00d4ff; margin-bottom: 1rem;">🎮 Robot Pathfinding Simulator</h3>
+            <p style="margin-bottom: 1rem;">Click to place obstacles, then watch the AI find the optimal path!</p>
+            <canvas class="game-canvas" id="pathfindingGame" width="400" height="300"></canvas>
+            <br>
+            <button class="cta-button" onclick="resetGame()">🔄 Reset Game</button>
+            <button class="cta-button" onclick="runPathfinding()">🤖 Find Path</button>
+        </div>
+    </section>
+
+    <section class="section" id="contact">
+        <h2>Let's Connect</h2>
+        <div class="contact-form">
+            <h3 style="color: #00d4ff; text-align: center; margin-bottom: 2rem;">Ready to have me on Team Fusion?</h3>
+            <form id="contactForm">
+                <div class="form-group">
+                    <label>Your Name</label>
+                    <input type="text" id="visitorName" required>
+                </div>
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" id="visitorEmail" required>
+                </div>
+                <div class="form-group">
+                    <label>Message</label>
+                    <textarea id="visitorMessage" rows="4" placeholder="Tell me about the team, upcoming competitions, or ask me anything!"></textarea>
+                </div>
+                <button type="submit" class="cta-button" style="width: 100%;">Send Message 🚀</button>
+            </form>
+            <div id="formResponse" style="margin-top: 1rem; text-align: center;"></div>
+        </div>
+        
+        <div style="text-align: center; margin-top: 3rem;">
+            <div style="margin-bottom: 2rem;">
+                <span style="font-size: 1.5rem;">📧</span> your.email@example.com<br>
+                <span style="font-size: 1.5rem;">📱</span> (555) 123-4567<br>
+                <span style="font-size: 1.5rem;">💻</span> github.com/yourusername
+            </div>
+        </div>
+    </section>
+
+    <!-- Chat Bot -->
+    <button class="chat-toggle" id="chatToggle" onclick="toggleChat()">💬</button>
+    <div class="chatbot" id="chatbot">
+        <div class="chatbot-header">
+            <span>Ask Me Anything! 🤖</span>
+            <button onclick="toggleChat()" style="float: right; background: none; border: none; color: white; font-size: 1.2rem; cursor: pointer;">×</button>
+        </div>
+        <div class="chatbot-messages" id="chatMessages">
+            <div style="margin-bottom: 1rem; padding: 0.5rem; background: rgba(0, 212, 255, 0.2); border-radius: 10px;">
+                👋 Hi! I'm an AI assistant representing this portfolio. Ask me about skills, projects, or experience!
+            </div>
+        </div>
+        <div class="chatbot-input">
+            <input type="text" id="chatInput" placeholder="Ask about my robotics experience..." onkeypress="handleChatEnter(event)">
+        </div>
+    </div>
+
+    <!-- Modals -->
+    <div class="modal" id="photoModal">
+        <div class="modal-content">
+            <button class="close-modal" onclick="closeModal('photoModal')">×</button>
+            <h3 style="color: #00d4ff; margin-bottom: 1rem;">📸 Photo Upload System</h3>
+            <p>Upload your photo to personalize the portfolio!</p>
+            <br>
+            <input type="file" accept="image/*" onchange="handlePhotoUpload(event)">
+        </div>
+    </div>
+
+    <script>
+        // Global state management
+        const portfolioData = {
+            score: 0,
+            totalQuestions: 0,
+            achievements: [],
+            currentQuiz: 0,
+            visitedSections: new Set(),
+            projects: [],
+            chatHistory: []
+        };
+
+        // Achievement system
+        const achievements = [
+            { id: 'explorer', name: 'Explorer', description: 'Visited all sections', icon: '🗺️' },
+            { id: 'coder', name: 'Code Master', description: 'Ran code in playground', icon: '💻' },
+            { id: 'quiz_master', name: 'Quiz Champion', description: 'Scored 80%+ on quiz', icon: '🏆' },
+            { id: 'uploader', name: 'Content Creator', description: 'Uploaded project photos', icon: '📸' },
+            { id: 'chatty', name: 'Conversationalist', description: 'Used the chat bot', icon: '💬' },
+            { id: 'gamer', name: 'Path Master', description: 'Completed pathfinding demo', icon: '🎮' }
+        ];
+
+        function unlockAchievement(achievementId) {
+            if (portfolioData.achievements.includes(achievementId)) return;
+            
+            portfolioData.achievements.push(achievementId);
+            const achievement = achievements.find(a => a.id === achievementId);
+            
+            if (achievement) {
+                showAchievementPopup(achievement);
+                updateAchievementCount();
+            }
+        }
+
+        function showAchievementPopup(achievement) {
+            const popup = document.createElement('div');
+            popup.className = 'achievement-popup';
+            popup.innerHTML = `
+                <strong>${achievement.icon} Achievement Unlocked!</strong><br>
+                ${achievement.name}: ${achievement.description}
+            `;
+            
+            document.getElementById('achievements').appendChild(popup);
+            
+            setTimeout(() => {
+                popup.remove();
+            }, 4000);
+        }
+
+        function updateAchievementCount() {
+            document.getElementById('achievementCount').textContent = 
+                `Achievements: ${portfolioData.achievements.length}/${achievements.length}`;
+        }
+
+        // Photo upload system
+        function uploadPhoto() {
+            document.getElementById('photoModal').style.display = 'block';
+        }
+
+        function uploadProjectPhoto() {
+            document.getElementById('projectUpload').click();
+        }
+
+        function handlePhotoUpload(event) {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const photoPlaceholder = document.querySelector('.photo-placeholder');
+                    photoPlaceholder.style.backgroundImage = `url(${e.target.result})`;
+                    photoPlaceholder.style.backgroundSize = 'cover';
+                    photoPlaceholder.style.backgroundPosition = 'center';
+                    photoPlaceholder.innerHTML = '';
+                    unlockAchievement('uploader');
+                    closeModal('photoModal');
+                };
+                reader.readAsDataURL(file);
+            }
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).style.display = 'none';
+        }
+
+        // Project photo gallery
+        document.getElementById('projectUpload').addEventListener('change', function(event) {
+            const files = Array.from(event.target.files);
+            const gallery = document.getElementById('projectGallery');
+            
+            files.forEach(file => {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const galleryItem = document.createElement('div');
+                    galleryItem.className = 'gallery-item project-item';
+                    galleryItem.dataset.category = 'uploaded';
+                    galleryItem.style.backgroundImage = `url(${e.target.result})`;
+                    galleryItem.style.backgroundSize = 'cover';
+                    galleryItem.style.backgroundPosition = 'center';
+                    gallery.appendChild(galleryItem);
+                };
+                reader.readAsDataURL(file);
+            });
+            
+            unlockAchievement('uploader');
+        });
+
+        // Project filtering
+        function filterProjects(category) {
+            const items = document.querySelectorAll('.project-item');
+            const buttons = document.querySelectorAll('.filter-btn');
+            
+            buttons.forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+            
+            items.forEach(item => {
+                if (category === 'all' || item.dataset.category === category) {
+                    item.style.display = 'block';
+                    item.style.animation = 'fadeIn 0.5s ease';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        }
+
+        // Code playground
+        function runCode() {
+            const code = document.getElementById('codeEditor').value;
+            const output = document.getElementById('codeOutput');
+            
+            // Capture console output
+            const originalLog = console.log;
+            let capturedOutput = '';
+            
+            console.log = function(...args) {
+                capturedOutput += args.join(' ') + '\n';
+                originalLog.apply(console, args);
+            };
+            
+            try {
+                // Create a safe execution environment
+                const result = eval(code);
+                output.textContent = capturedOutput || `✅ Code executed successfully!${result !== undefined ? '\nResult: ' + result : ''}`;
+                unlockAchievement('coder');
+            } catch (error) {
+                output.textContent = `❌ Error: ${error.message}`;
+            }
+            
+            console.log = originalLog;
+        }
+
+        // Quiz system
+        const quizQuestions = [
+            {
+                question: "What's the maximum robot size in FTC competitions?",
+                options: ["18\" x 18\" x 18\"", "20\" x 20\" x 20\"", "16\" x 16\" x 16\"", "No limit"],
+                correct: 0,
+                explanation: "FTC robots must fit within an 18-inch cube at the start of the match."
+            },
+            {
+                question: "Which programming language is primarily used for FTC robot control?",
+                options: ["Python", "C++", "Java", "Scratch"],
+                correct: 2,
+                explanation: "Java is the primary language for FTC, using the FTC SDK and Android Studio."
+            },
+            {
+                question: "What does PID stand for in robotics control systems?",
+                options: ["Program Interface Design", "Proportional Integral Derivative", "Power Input Device", "Processed Image Data"],
+                correct: 1,
+                explanation: "PID controllers use Proportional, Integral, and Derivative terms for precise control."
+            },
+            {
+                question: "In computer vision, what does OpenCV primarily help with?",
+                options: ["Web development", "Image processing", "Database management", "Network protocols"],
+                correct: 1,
+                explanation: "OpenCV is a computer vision library for image and video processing tasks."
+            },
+            {
+                question: "What's a key advantage of using encoders on robot wheels?",
+                options: ["Faster speed", "Pretty lights", "Precise position tracking", "Wireless communication"],
+                correct: 2,
+                explanation: "Encoders provide feedback on wheel rotation for accurate distance and position measurement."
+            }
+        ];
+
+        let currentQuestion = 0;
+
+        function startQuiz() {
+            currentQuestion = 0;
+            portfolioData.score = 0;
+            portfolioData.totalQuestions = quizQuestions.length;
+            showQuestion();
+        }
+
+        function showQuestion() {
+            const question = quizQuestions[currentQuestion];
+            const container = document.getElementById('quizContainer');
+            
+            container.innerHTML = `
+                <div class="quiz-question">
+                    Question ${currentQuestion + 1}/${quizQuestions.length}: ${question.question}
+                </div>
+                <div class="quiz-options" id="quizOptions">
+                    ${question.options.map((option, index) => 
+                        `<div class="quiz-option" onclick="selectAnswer(${index})">${option}</div>`
+                    ).join('')}
+                </div>
+            `;
+        }
+
+        function selectAnswer(selectedIndex) {
+            const question = quizQuestions[currentQuestion];
+            const options = document.querySelectorAll('.quiz-option');
+            
+            options.forEach((option, index) => {
+                if (index === question.correct) {
+                    option.classList.add('correct');
+                } else if (index === selectedIndex && index !== question.correct) {
+                    option.classList.add('incorrect');
+                }
+                option.style.pointerEvents = 'none';
+            });
+
+            if (selectedIndex === question.correct) {
+                portfolioData.score++;
+            }
+
+            setTimeout(() => {
+                currentQuestion++;
+                if (currentQuestion < quizQuestions.length) {
+                    showQuestion();
+                } else {
+                    showQuizResults();
+                }
+            }, 2000);
+        }
+
+        function showQuizResults() {
+            const percentage = (portfolioData.score / portfolioData.totalQuestions) * 100;
+            const container = document.getElementById('quizContainer');
+            
+            let resultMessage = '';
+            if (percentage >= 80) {
+                resultMessage = '🏆 EXCELLENT! You really know your stuff!';
+                unlockAchievement('quiz_master');
+            } else if (percentage >= 60) {
+                resultMessage = '👍 Great job! Solid robotics knowledge!';
+            } else {
+                resultMessage = '📚 Good attempt! Keep learning and growing!';
+            }
+
+            container.innerHTML = `
+                <div style="text-align: center;">
+                    <h3 style="color: #ffd700; margin-bottom: 1rem;">Quiz Complete!</h3>
+                    <div style="font-size: 2rem; margin-bottom: 1rem;">${resultMessage}</div>
+                    <div style="font-size: 1.5rem; margin-bottom: 2rem;">
+                        Score: ${portfolioData.score}/${portfolioData.totalQuestions} (${percentage.toFixed(0)}%)
+                    </div>
+                    <button class="cta-button" onclick="startQuiz()">🔄 Retake Quiz</button>
+                </div>
+            `;
+            
+            updateQuizScore();
+        }
+
+        function updateQuizScore() {
+            document.getElementById('quizScore').textContent = 
+                `Score: ${portfolioData.score}/${portfolioData.totalQuestions}`;
+        }
+
+        // Pathfinding game
+        let gameGrid = [];
+        let gameSize = 20;
+        let startPos = {x: 0, y: 0};
+        let endPos = {x: 19, y: 19};
+        let obstacles = new Set();
+
+        function initGame() {
+            const canvas = document.getElementById('pathfindingGame');
+            const ctx = canvas.getContext('2d');
+            const cellSize = canvas.width / gameSize;
+            
+            canvas.addEventListener('click', (e) => {
+                const rect = canvas.getBoundingClientRect();
+                const x = Math.floor((e.clientX - rect.left) / cellSize);
+                const y = Math.floor((e.clientY - rect.top) / cellSize);
+                
+                if (x !== startPos.x || y !== startPos.y) {
+                    const key = `${x},${y}`;
+                    if (obstacles.has(key)) {
+                        obstacles.delete(key);
+                    } else {
+                        obstacles.add(key);
+                    }
+                    drawGame();
+                }
+            });
+            
+            drawGame();
+        }
+
+        function drawGame() {
+            const canvas = document.getElementById('pathfindingGame');
+            const ctx = canvas.getContext('2d');
+            const cellSize = canvas.width / gameSize;
+            
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            
+            // Draw grid
+            ctx.strokeStyle = '#333';
+            for (let i = 0; i <= gameSize; i++) {
+                ctx.beginPath();
+                ctx.moveTo(i * cellSize, 0);
+                ctx.lineTo(i * cellSize, canvas.height);
+                ctx.stroke();
+                
+                ctx.beginPath();
+                ctx.moveTo(0, i * cellSize);
+                ctx.lineTo(canvas.width, i * cellSize);
+                ctx.stroke();
+            }
+            
+            // Draw obstacles
+            ctx.fillStyle = '#e94560';
+            obstacles.forEach(obstacleKey => {
+                const [x, y] = obstacleKey.split(',').map(Number);
+                ctx.fillRect(x * cellSize, y * cellSize, cellSize, cellSize);
+            });
+            
+            // Draw start position
+            ctx.fillStyle = '#00d4ff';
+            ctx.fillRect(startPos.x * cellSize, startPos.y * cellSize, cellSize, cellSize);
+            
+            // Draw end position
+            ctx.fillStyle = '#ffd700';
+            ctx.fillRect(endPos.x * cellSize, endPos.y * cellSize, cellSize, cellSize);
+        }
+
+        function runPathfinding() {
+            // Simple A* pathfinding implementation
+            const path = findPath(startPos, endPos, obstacles);
+            if (path.length > 0) {
+                animatePath(path);
+                unlockAchievement('gamer');
+            }
+        }
+
+        function findPath(start, end, obstacles) {
+            // Simplified A* algorithm
+            const openSet = [{...start, g: 0, h: manhattan(start, end), f: manhattan(start, end), parent: null}];
+            const closedSet = new Set();
+            
+            while (openSet.length > 0) {
+                openSet.sort((a, b) => a.f - b.f);
+                const current = openSet.shift();
+                
+                if (current.x === end.x && current.y === end.y) {
+                    const path = [];
+                    let node = current;
+                    while (node) {
+                        path.unshift({x: node.x, y: node.y});
+                        node = node.parent;
+                    }
+                    return path;
+                }
+                
+                closedSet.add(`${current.x},${current.y}`);
+                
+                const neighbors = [
+                    {x: current.x + 1, y: current.y},
+                    {x: current.x - 1, y: current.y},
+                    {x: current.x, y: current.y + 1},
+                    {x: current.x, y: current.y - 1}
+                ];
+                
+                for (const neighbor of neighbors) {
+                    if (neighbor.x < 0 || neighbor.x >= gameSize || neighbor.y < 0 || neighbor.y >= gameSize) continue;
+                    if (obstacles.has(`${neighbor.x},${neighbor.y}`)) continue;
+                    if (closedSet.has(`${neighbor.x},${neighbor.y}`)) continue;
+                    
+                    const g = current.g + 1;
+                    const h = manhattan(neighbor, end);
+                    const f = g + h;
+                    
+                    const existingNode = openSet.find(n => n.x === neighbor.x && n.y === neighbor.y);
+                    if (!existingNode || g < existingNode.g) {
+                        if (existingNode) {
+                            existingNode.g = g;
+                            existingNode.f = f;
+                            existingNode.parent = current;
+                        } else {
+                            openSet.push({...neighbor, g, h, f, parent: current});
+                        }
+                    }
+                }
+            }
+            return [];
+        }
+
+        function manhattan(a, b) {
+            return Math.abs(a.x - b.x) + Math.abs(a.y - b.y);
+        }
+
+        function animatePath(path) {
+            const canvas = document.getElementById('pathfindingGame');
+            const ctx = canvas.getContext('2d');
+            const cellSize = canvas.width / gameSize;
+            
+            let i = 0;
+            const interval = setInterval(() => {
+                if (i >= path.length) {
+                    clearInterval(interval);
+                    return;
+                }
+                
+                const pos = path[i];
+                ctx.fillStyle = '#00ff00';
+                ctx.fillRect(pos.x * cellSize + 2, pos.y * cellSize + 2, cellSize - 4, cellSize - 4);
+                i++;
+            }, 100);
+        }
+
+        function resetGame() {
+            obstacles.clear();
+            drawGame();
+        }
+
+        // Data visualization
+        function createSkillsChart() {
+            const canvas = document.getElementById('skillsChart');
+            const ctx = canvas.getContext('2d');
+            
+            const skills = [
+                { name: 'Java', level: 90 },
+                { name: 'Python', level: 85 },
+                { name: 'CAD Design', level: 80 },
+                { name: 'Electronics', level: 75 },
+                { name: 'AI/ML', level: 70 },
+                { name: 'Leadership', level: 95 }
+            ];
+            
+            const barHeight = 30;
+            const barSpacing = 40;
+            const maxWidth = canvas.width - 200;
+            
+            ctx.fillStyle = '#ffffff';
+            ctx.font = '14px Inter';
+            
+            skills.forEach((skill, index) => {
+                const y = index * barSpacing + 20;
+                const barWidth = (skill.level / 100) * maxWidth;
+                
+                // Label
+                ctx.fillText(skill.name, 10, y + 20);
+                
+                // Background bar
+                ctx.fillStyle = 'rgba(255, 255, 255, 0.1)';
+                ctx.fillRect(120, y, maxWidth, barHeight);
+                
+                // Skill level bar
+                const gradient = ctx.createLinearGradient(120, y, 120 + barWidth, y);
+                gradient.addColorStop(0, '#00d4ff');
+                gradient.addColorStop(1, '#e94560');
+                ctx.fillStyle = gradient;
+                ctx.fillRect(120, y, barWidth, barHeight);
+                
+                // Percentage
+                ctx.fillStyle = '#ffffff';
+                ctx.fillText(`${skill.level}%`, 120 + maxWidth + 10, y + 20);
+            });
+        }
+
+        // Contact form
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const name = document.getElementById('visitorName').value;
+            const email = document.getElementById('visitorEmail').value;
+            const message = document.getElementById('visitorMessage').value;
+            
+            // Simulate form processing
+            const response = document.getElementById('formResponse');
+            response.innerHTML = `
+                <div style="color: #00ff00; padding: 1rem; background: rgba(0, 255, 0, 0.1); border-radius: 10px;">
+                    ✅ Message received, ${name}! I'll get back to you soon at ${email}
+                </div>
+            `;
+            
+            // Store message (simulated backend)
+            portfolioData.messages = portfolioData.messages || [];
+            portfolioData.messages.push({ name, email, message, timestamp: new Date() });
+            
+            document.getElementById('contactForm').reset();
+        });
+
+        // Chatbot system
+        function toggleChat() {
+            const chatbot = document.getElementById('chatbot');
+            const toggle = document.getElementById('chatToggle');
+            
+            if (chatbot.style.display === 'none' || !chatbot.style.display) {
+                chatbot.style.display = 'flex';
+                toggle.style.display = 'none';
+                unlockAchievement('chatty');
+            } else {
+                chatbot.style.display = 'none';
+                toggle.style.display = 'block';
+            }
+        }
+
+        function handleChatEnter(event) {
+            if (event.key === 'Enter') {
+                sendChatMessage();
+            }
+        }
+
+        function sendChatMessage() {
+            const input = document.getElementById('chatInput');
+            const message = input.value.trim();
+            if (!message) return;
+            
+            const messages = document.getElementById('chatMessages');
+            
+            // User message
+            messages.innerHTML += `
+                <div style="margin-bottom: 1rem; text-align: right;">
+                    <div style="background: rgba(0, 212, 255, 0.3); padding: 0.5rem; border-radius: 10px; display: inline-block; max-width: 80%;">
+                        ${message}
+                    </div>
+                </div>
+            `;
+            
+            // Bot response
+            setTimeout(() => {
+                const response = generateBotResponse(message.toLowerCase());
+                messages.innerHTML += `
+                    <div style="margin-bottom: 1rem;">
+                        <div style="background: rgba(233, 69, 96, 0.3); padding: 0.5rem; border-radius: 10px; display: inline-block; max-width: 80%;">
+                            🤖 ${response}
+                        </div>
+                    </div>
+                `;
+                messages.scrollTop = messages.scrollHeight;
+            }, 1000);
+            
+            input.value = '';
+            messages.scrollTop = messages.scrollHeight;
+        }
+
+        function generateBotResponse(message) {
+            const responses = {
+                'skills': "I have extensive experience in Java, Python, CAD design, electronics, and robotics! Check out my skills section for details.",
+                'projects': "I've built autonomous robots, AI systems, and custom hardware. My project gallery shows everything with code examples!",
+                'experience': "I've led teams, organized competitions, and mentored other students. Leadership is as important as technical skills in robotics!",
+                'ftc': "I'm passionate about FTC! I understand the competition format, scoring, and have experience with autonomous programming.",
+                'team': "I believe in collaborative engineering, clear communication, and shared problem-solving. Teams achieve more than individuals!",
+                'fusion': "Team Fusion sounds incredible! I'd love to contribute my technical skills and leadership experience to help the team succeed."
+            };
+            
+            for (const [key, response] of Object.entries(responses)) {
+                if (message.includes(key)) {
+                    return response;
+                }
+            }
+            
+            return "That's a great question! Feel free to explore my portfolio sections or ask about my robotics experience, technical skills, or leadership background.";
+        }
+
+        // Navigation and scroll tracking
+        function scrollToSection(sectionId) {
+            const element = document.getElementById(sectionId);
+            element.scrollIntoView({ behavior: 'smooth' });
+            
+            portfolioData.visitedSections.add(sectionId);
+            if (portfolioData.visitedSections.size >= 5) {
+                unlockAchievement('explorer');
+            }
+        }
+
+        // Progress bar
+        window.addEventListener('scroll', () => {
+            const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (winScroll / height) * 100;
+            document.getElementById('progressBar').style.width = scrolled + '%';
+        });
+
+        // Navbar background on scroll
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 100) {
+                navbar.style.background = 'rgba(15, 15, 35, 0.95)';
+            } else {
+                navbar.style.background = 'rgba(15, 15, 35, 0.9)';
+            }
+        });
+
+        // Particle system
+        function createParticle() {
+            const particle = document.createElement('div');
+            particle.style.position = 'fixed';
+            particle.style.width = '4px';
+            particle.style.height = '4px';
+            particle.style.background = '#00d4ff';
+            particle.style.borderRadius = '50%';
+            particle.style.pointerEvents = 'none';
+            particle.style.opacity = '0.7';
+            particle.style.zIndex = '999';
+            
+            const startX = Math.random() * window.innerWidth;
+            const startY = window.innerHeight + 10;
+            
+            particle.style.left = startX + 'px';
+            particle.style.top = startY + 'px';
+            
+            document.body.appendChild(particle);
+            
+            const duration = 3000 + Math.random() * 2000;
+            const endY = -10;
+            
+            particle.animate([
+                { transform: 'translateY(0px)', opacity: 0.7 },
+                { transform: `translateY(${endY - startY}px)`, opacity: 0 }
+            ], {
+                duration: duration,
+                easing: 'linear'
+            }).onfinish = () => {
+                particle.remove();
+            };
+        }
+
+        // Resume builder functionality
+        function createDynamicResume() {
+            const resumeData = {
+                education: [
+                    { school: 'Your High School', year: '2025', gpa: '4.0', focus: 'STEM Track' },
+                    { school: 'Robotics Bootcamp', year: '2024', focus: 'Advanced Programming' }
+                ],
+                experience: [
+                    { role: 'Team Lead', org: 'School Robotics Club', year: '2024-2025', achievements: 'Led team to regional victory' },
+                    { role: 'STEM Tutor', org: 'Community Center', year: '2023-2024', achievements: 'Mentored 20+ students' }
+                ],
+                certifications: [
+                    'Java Programming Certification',
+                    'CAD Design Fundamentals',
+                    'Electronics Safety Training'
+                ]
+            };
+            
+            return resumeData;
+        }
+
+        // Initialize everything when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            initGame();
+            createSkillsChart();
+            setInterval(createParticle, 500);
+            updateAchievementCount();
+            
+            // Animate elements on scroll
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, observerOptions);
+
+            // Initially hide elements and observe them
+            document.querySelectorAll('.skill-card, .project-card, .timeline-item').forEach(el => {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(30px)';
+                el.style.transition = 'all 0.6s ease';
+                observer.observe(el);
+            });
+
+            // Add keyboard shortcuts
+            document.addEventListener('keydown', (e) => {
+                if (e.ctrlKey || e.metaKey) {
+                    switch(e.key) {
+                        case '1': scrollToSection('hero'); break;
+                        case '2': scrollToSection('skills'); break;
+                        case '3': scrollToSection('projects'); break;
+                        case '4': scrollToSection('quiz'); break;
+                    }
+                }
+            });
+        });
+
+        // Advanced features
+        function exportResume() {
+            const resumeData = createDynamicResume();
+            const blob = new Blob([JSON.stringify(resumeData, null, 2)], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'robotics_resume.json';
+            a.click();
+        }
+
+        function sharePortfolio() {
+            if (navigator.share) {
+                navigator.share({
+                    title: 'Check out this amazing robotics portfolio!',
+                    text: 'This candidate would be perfect for our FTC team!',
+                    url: window.location.href
+                });
+            } else {
+                navigator.clipboard.writeText(window.location.href);
+                alert('Portfolio URL copied to clipboard!');
+            }
+        }
+
+        // Performance monitoring
+        function trackVisitorEngagement() {
+            const engagement = {
+                timeOnSite: Date.now(),
+                sectionsVisited: portfolioData.visitedSections.size,
+                interactionsCount: portfolioData.achievements.length,
+                quizScore: portfolioData.score
+            };
+            
+            console.log('Visitor Engagement:', engagement);
+            return engagement;
+        }
+
+        // Auto-save functionality
+        setInterval(() => {
+            const data = {
+                ...portfolioData,
+                timestamp: Date.now()
+            };
+            // In a real app, this would save to a database
+            console.log('Auto-saving portfolio data:', data);
+        }, 30000);
+
+        // Add some easter eggs
+        let konamiCode = [];
+        const konamiSequence = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'KeyB', 'KeyA'];
+
+        document.addEventListener('keydown', (e) => {
+            konamiCode.push(e.code);
+            konamiCode = konamiCode.slice(-10);
+            
+            if (konamiCode.join(',') === konamiSequence.join(',')) {
+                document.body.style.filter = 'hue-rotate(180deg)';
+                setTimeout(() => {
+                    document.body.style.filter = 'none';
+                }, 3000);
+                unlockAchievement('secret');
+            }
+        });
+
+        // Real-time clock
+        function updateClock() {
+            const now = new Date();
+            const timeString = now.toLocaleTimeString();
+            
+            // Add clock to navbar if space allows
+            const navbar = document.querySelector('.nav-content');
+            let clock = document.getElementById('navClock');
+            if (!clock && window.innerWidth > 768) {
+                clock = document.createElement('div');
+                clock.id = 'navClock';
+                clock.style.color = '#00d4ff';
+                clock.style.fontSize = '0.9rem';
+                navbar.appendChild(clock);
+            }
+            
+            if (clock) {
+                clock.textContent = timeString;
+            }
+        }
+
+        setInterval(updateClock, 1000);
+        updateClock();
+
+        // Smart content recommendations
+        function getRecommendations() {
+            const viewed = Array.from(portfolioData.visitedSections);
+            const all = ['hero', 'skills', 'projects', 'timeline', 'quiz', 'contact'];
+            const unvisited = all.filter(section => !viewed.includes(section));
+            
+            if (unvisited.length > 0) {
+                return `💡 Don't miss: ${unvisited.map(s => s.charAt(0).toUpperCase() + s.slice(1)).join(', ')}`;
+            }
+            
+            return '🎉 You\'ve explored everything! Impressive attention to detail!';
+        }
+
+        // Add secret achievement
+        achievements.push({ 
+            id: 'secret', 
+            name: 'Matrix Mode', 
+            description: 'Found the secret code', 
+            icon: '🕶️' 
+        });
+
+        // Dynamic theme switcher
+        let currentTheme = 'default';
+        function switchTheme() {
+            const themes = {
+                default: {
+                    primary: '#00d4ff',
+                    secondary: '#e94560',
+                    accent: '#ffd700'
+                },
+                matrix: {
+                    primary: '#00ff00',
+                    secondary: '#008000',
+                    accent: '#90EE90'
+                },
+                neon: {
+                    primary: '#ff006e',
+                    secondary: '#8338ec',
+                    accent: '#ffbe0b'
+                }
+            };
+            
+            // This would dynamically update CSS custom properties
+            // Implementation would involve updating all color references
+        }
+
+        // Analytics simulation
+        function logAnalytics(event, data) {
+            const analyticsEvent = {
+                timestamp: Date.now(),
+                event: event,
+                data: data,
+                userAgent: navigator.userAgent,
+                viewport: {
+                    width: window.innerWidth,
+                    height: window.innerHeight
+                }
+            };
+            
+            console.log('📊 Analytics:', analyticsEvent);
+            // In real implementation, this would send to analytics service
+        }
+
+        // Log page load
+        logAnalytics('page_load', { url: window.location.href });
+
+        // Enhanced interaction tracking
+        document.addEventListener('click', (e) => {
+            if (e.target.classList.contains('cta-button') || 
+                e.target.classList.contains('nav-links') ||
+                e.target.classList.contains('project-card')) {
+                logAnalytics('interaction', { 
+                    element: e.target.className,
+                    text: e.target.textContent?.substring(0, 50) 
+                });
+            }
+        });
+    </script>
+</body>
+</html>
